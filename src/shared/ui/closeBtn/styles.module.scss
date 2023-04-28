@@ -1,0 +1,19 @@
+@import '../../../app/styles/vars.scss';
+
+.closeBtn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  width: 46px;
+  height: 32px;
+
+  &:hover{
+    background: $hover-red;
+  }
+
+  img{
+    width: 10px;
+  }
+}

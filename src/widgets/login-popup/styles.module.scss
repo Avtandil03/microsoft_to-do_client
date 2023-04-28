@@ -1,0 +1,26 @@
+@import '../../app/styles/vars.scss';
+
+.loginPopup{
+  background-color: #000;
+  position: absolute;
+  width: 450px;
+  height: 520px;
+  border: #d9d9d9 1px solid;
+  
+  .header{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+
+    p{
+      color: #fff;
+      font-family: system-ui, 'Times New Roman', Times, serif;
+      font-size: 12px;
+      margin-left: 10px;
+    }
+
+
+  }
+}
+
+
