@@ -1,6 +1,8 @@
 @import '../../app/styles/vars.scss';
 
 .loginPopup{
+  
+  font-family: system-ui, 'Times New Roman', Times, serif;
   background-color: #000;
   position: absolute;
   width: 450px;
@@ -14,12 +16,73 @@
 
     p{
       color: #fff;
-      font-family: system-ui, 'Times New Roman', Times, serif;
       font-size: 12px;
       margin-left: 10px;
     }
+  }
 
+  .content{
+    color: #fff;
+    padding-top: 24px; 
 
+    &_title{
+      font-size: 20px; 
+      padding-left: 24px;
+    }
+
+  }
+
+  .socials{
+    &_title{
+      padding-left: 24px;
+      margin-top: 15px;
+      line-height: 31px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .social{
+      padding-left: 24px;
+      display: flex;
+      height: 62px;
+      align-items:center;
+
+      &:hover{
+        background-color: $hover-32;
+      }
+
+      &:active{
+        filter: brightness(1.5);
+        transform: scale(0.98);
+      }
+
+      &.active{
+        background: #004881 !important;
+      }
+
+      img{
+        max-width: 32px;
+        max-height: 32px;
+      }
+
+      .txtWrapper{
+        margin-left: 12px;
+        font-size: 13px;
+        line-height: 18px;
+        font-weight: 600;
+      }
+
+      &_title{
+
+      }
+
+      &_type{
+        color:gray; 
+      }
+    }
+
+    
+    
   }
 }
 
