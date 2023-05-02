@@ -1,8 +1,16 @@
-<svg preserveAspectRatio="xMinYMin meet" width="auto" height="auto" >
-    <g fill="none" fill-rule="evenodd">
-        <path fill="#F25022" d="M0 0h10.048v9.98H0z"/>
-        <path fill="#7FBA00" d="M11.097 0h10.047v9.98H11.097z"/>
-        <path fill="#00A4EF" d="M0 11.02h10.048V21H0z"/>
-        <path fill="#FFB900" d="M11.097 11.02h10.047V21H11.097z"/>
-    </g>
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="402" width="582" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g stroke="null" id="svg_1" fill-rule="evenodd" fill="none">
+   <path stroke="null" id="svg_2" d="m0,0l15.152159,0l0,15.181989l-15.152159,0l0,-15.181989z" fill="#F25022"/>
+   <path stroke="null" id="svg_3" d="m16.734028,0l15.150651,0l0,15.181989l-15.150651,0l0,-15.181989z" fill="#7FBA00"/>
+   <path stroke="null" id="svg_4" d="m0,16.764081l15.152159,0l0,15.181989l-15.152159,0l0,-15.181989z" fill="#00A4EF"/>
+   <path stroke="null" id="svg_5" d="m16.734028,16.764081l15.150651,0l0,15.181989l-15.150651,0l0,-15.181989z" fill="#FFB900"/>
+  </g>
+ </g>
 </svg>
