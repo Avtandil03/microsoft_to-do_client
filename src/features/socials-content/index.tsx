@@ -1,18 +1,15 @@
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 import styles from './styles.module.scss'
 import { gmailLogo, microsoftLogo, googleLogo } from '../assets/index'
 import { Social } from '../../shared/ui';
+import { singWays } from '../../features/types';
 
-export const socialsContent: FC = () => {
+interface socialsProps{
+  signWay: string,
+  passSignWay: (arg: string) => void
+}
 
-  const types = {
-    emailLogin: 'emailLogin',
-    emailRegistration: 'emailRegistration',
-    google: 'google',
-    microsoft: 'microsoft'
-  }
-
-  const [social, setSocial] = useState(types.emailLogin)
+export const socialsContent:FC<socialsProps> = ({signWay, passSignWay}) => {
 
   return (
     <>
@@ -20,27 +17,27 @@ export const socialsContent: FC = () => {
       <div className={styles.socials}>
         <h5 className={styles.socials_title}>Use this way</h5>
         <Social
-          onClick={() => setSocial(types.emailLogin)}
-          isActive={social === types.emailLogin}
+          onClick={() => passSignWay(singWays.login)}
+          isActive={signWay === singWays.login}
           logo={gmailLogo}
           describeTxt={{title:'Login with email', signWays:'Email'}}
         />
         <Social
-          onClick={() => setSocial(types.emailRegistration)}
-          isActive={social === types.emailRegistration}
+          onClick={() => passSignWay(singWays.retgistration)}
+          isActive={signWay === singWays.retgistration}
           logo={gmailLogo}
           describeTxt={{title:'Create account with email', signWays:'Email'}}
         />
         <h5 className={styles.socials_title}>Use different way to sign in</h5>
         <Social
-          onClick={() => setSocial(types.microsoft)}
-          isActive={social === types.microsoft}
+          onClick={() => passSignWay(singWays.microsoft)}
+          isActive={signWay === singWays.microsoft}
           logo={microsoftLogo}
           describeTxt={{title:'Microsoft account', signWays:'Email, phone, or Skype'}}
         />
         <Social
-          onClick={() => setSocial(types.google)}
-          isActive={social === types.google}
+          onClick={() => passSignWay(singWays.google)}
+          isActive={signWay === singWays.google}
           logo={googleLogo}
           describeTxt={{title:'Google account', signWays:'Email, phone'}}
         />
