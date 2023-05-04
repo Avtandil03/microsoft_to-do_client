@@ -13,7 +13,8 @@ export const loginPopup: FC<popupProps> = ({ closePopup }) => {
   const [singWay, setSignWay] = useState(singWays.login)
 
   const handleContinue = () => {
-    
+
+
   }
 
   return (
