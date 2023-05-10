@@ -8,7 +8,7 @@
   width: 450px;
   height: 520px;
   border: #d9d9d9 1px solid;
-  color: #fff;
+  color: $login-bg;
 
   @media(max-width:450px) {
     & {

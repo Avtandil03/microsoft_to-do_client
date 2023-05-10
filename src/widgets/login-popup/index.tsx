@@ -1,21 +1,15 @@
-import { FC, useState } from 'react';
+import { FC, ReactNode, useState } from 'react';
 import styles from './styles.module.scss'
 import { CloseBtn } from './../../shared/ui';
-import { Socials } from '../../features';
 import { singWays } from '../../features/types';
 
 interface popupProps {
-  closePopup: () => void
+  closePopup: () => void,
+  handleContinue: () => void,
+  children: ReactNode
 }
 
-export const loginPopup: FC<popupProps> = ({ closePopup }) => {
-  
-  const [singWay, setSignWay] = useState(singWays.login)
-
-  const handleContinue = () => {
-
-
-  }
+export const loginPopup: FC<popupProps> = ({ closePopup, handleContinue, children }) => {
 
   return (
     <div className={styles.loginPopup} >
@@ -24,7 +18,7 @@ export const loginPopup: FC<popupProps> = ({ closePopup }) => {
         <div className={styles.closeBtnWrapper}><CloseBtn onClick={closePopup} /></div>
       </div>
       <div className={styles.content}>
-        <Socials signWay={singWay} passSignWay={setSignWay}/>
+        {children}
       </div>
       <button 
         className={styles.continueBtn}

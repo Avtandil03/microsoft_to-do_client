@@ -5,10 +5,12 @@ import { authApi } from '../../features/api/apiSlice';
 import useReducer from '../../features/user/userSlice';
 
 import counterReducer from '../../features/counter/counterSlice';
+import signWaySlice from '../../features/sign-way/signWaySlice';
 
 export const store = configureStore({
   reducer: {
     counter: counterReducer,
+    chooseWay: signWaySlice,
     user: useReducer,
     [authApi.reducerPath]: authApi.reducer
   },
