@@ -3,13 +3,14 @@ import styles from './styles.module.scss'
 import { gmailLogo, microsoftLogo, googleLogo } from '../assets/index'
 import { Social } from '../../shared/ui';
 import { singWays } from '../../features/types';
+import { useAppDispatch, useAppSelector } from '../../app/store/store';
+import { setSignWay } from '../sign-way/signWaySlice';
 
-interface socialsProps{
-  signWay: string,
-  passSignWay: (arg: string) => void
-}
 
-export const socialsContent:FC<socialsProps> = ({signWay, passSignWay}) => {
+export const socialsContent:FC = () => {
+
+  const dispatch = useAppDispatch()
+  const signWay = useAppSelector((state) => state.chooseWay.signWay)
 
   return (
     <>
@@ -17,26 +18,26 @@ export const socialsContent:FC<socialsProps> = ({signWay, passSignWay}) => {
       <div className={styles.socials}>
         <h5 className={styles.socials_title}>Use this way</h5>
         <Social
-          onClick={() => passSignWay(singWays.login)}
+          onClick={() => dispatch(setSignWay(singWays.login))}
           isActive={signWay === singWays.login}
           logo={gmailLogo}
           describeTxt={{title:'Login with email', signWays:'Email'}}
         />
         <Social
-          onClick={() => passSignWay(singWays.retgistration)}
+          onClick={() => dispatch(setSignWay(singWays.retgistration))}
           isActive={signWay === singWays.retgistration}
           logo={gmailLogo}
           describeTxt={{title:'Create account with email', signWays:'Email'}}
         />
         <h5 className={styles.socials_title}>Use different way to sign in</h5>
         <Social
-          onClick={() => passSignWay(singWays.microsoft)}
+          onClick={() => dispatch(setSignWay(singWays.microsoft))}
           isActive={signWay === singWays.microsoft}
           logo={microsoftLogo}
           describeTxt={{title:'Microsoft account', signWays:'Email, phone, or Skype'}}
         />
         <Social
-          onClick={() => passSignWay(singWays.google)}
+          onClick={() => dispatch(setSignWay(singWays.google))}
           isActive={signWay === singWays.google}
           logo={googleLogo}
           describeTxt={{title:'Google account', signWays:'Email, phone'}}
