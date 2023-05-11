@@ -1,46 +1,51 @@
 @import '../../app/styles/vars';
 
-.container{
+.container {
   padding-left: 15px;
   padding-right: 20px;
   color: $login-bg;
-}
 
-img{
-  max-width: 45px;
-}
+  img {
+    max-width: 45px;
+  }
 
-h1{
-  font-size: 32px;
-  line-height: 45px;
-  margin-bottom: 20px;
-}
+  h1 {
+    font-size: 32px;
+    line-height: 45px;
+    margin-bottom: 20px;
+  }
 
-input{
-  border: none;
-  border-bottom: 1px solid $color-dark;
-  width: 100%;
-  background-color: transparent;
-  margin-bottom: 20px;
-  font-size: 19px;
-  outline: none;
-  &:focus-visible {
-    border-bottom: 1px solid $color-primary ;
+  input {
+    color: $login-bg;
+    border: none;
+    border-bottom: 1px solid $color-dark;
+    width: 100%;
+    background-color: transparent;
+    margin-bottom: 20px;
+    font-size: 19px;
+    outline: none;
+
+    &:focus-visible {
+      border-bottom: 1px solid $color-primary ;
+    }
+  }
+
+  p {
+    font-size: 13px;
+    margin-left: 10px;
+
+    span {
+      color: $color-primary;
+
+      &:hover {
+        text-decoration: underline;
+        cursor: pointer;
+      }
+    }
   }
 }
 
-p{
-  font-size: 13px;
-  margin-left: 10px;
-  span{
-    color: $color-primary;
-    &:hover{
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }  
-}
 
-.isValid{
+.isValid {
   border-bottom: 1px solid greenyellow !important;
 }
