@@ -8,7 +8,7 @@ import { singWays } from '../types'
 
 export const registrationForm = () => {
 
-  const { name, email, password } = useAppSelector((state) => state.user)
+  const { name, email, password, isNameValid, isEmailValid, isPasswordValid } = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
 
   return (
@@ -16,7 +16,7 @@ export const registrationForm = () => {
       <img src={gmailLogo} alt="gamil-logo.svg" />
       <h1>Login</h1>
       <div>
-        <input 
+        <input className={isNameValid ? styles.isValid : ''}
           placeholder='Name or nickname '
           type="name"
           id="name"
@@ -26,7 +26,7 @@ export const registrationForm = () => {
         />
       </div>
       <div>
-        <input 
+        <input className={isEmailValid ? styles.isValid : ''} 
           placeholder='Email'
           type="email"
           id="email"
@@ -36,7 +36,7 @@ export const registrationForm = () => {
         />
       </div>
       <div>
-        <input
+        <input className={isPasswordValid ? styles.isValid : ''}
           placeholder='Password'
           type="password"
           id="password"

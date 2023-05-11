@@ -6,16 +6,17 @@ import styles from './styles.module.scss'
 import { setAreChoosen, setSignWay } from '../sign-way/signWaySlice'
 import { singWays } from '../types'
 
+
 export const loginForm = () => {
 
-  const { email, password } = useAppSelector((state) => state.user)
+  const { email, password, isEmailValid, isPasswordValid } = useAppSelector((state) => state.user)
   const dispatch = useAppDispatch()
   return (
     <div className={styles.container}>
       <img src={gmailLogo} alt="gamil-logo.svg" />
       <h1>Login</h1>
       <div>
-        <input 
+        <input className={isEmailValid ? styles.isValid : ''} 
           placeholder='Email'
           type="email"
           id="email"
@@ -25,7 +26,7 @@ export const loginForm = () => {
         />
       </div>
       <div>
-        <input
+        <input className={isPasswordValid ? styles.isValid: ''}
           placeholder='Password'
           type="password"
           id="password"
