@@ -1,6 +1,6 @@
 export const singWays = {
   login: 'login',
-  retgistration: 'retgistration',
+  registration: 'registration',
   microsoft: 'microsoft',
   google: 'google',
 }

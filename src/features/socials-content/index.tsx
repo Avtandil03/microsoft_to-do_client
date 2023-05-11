@@ -24,8 +24,8 @@ export const socialsContent:FC = () => {
           describeTxt={{title:'Login with email', signWays:'Email'}}
         />
         <Social
-          onClick={() => dispatch(setSignWay(singWays.retgistration))}
-          isActive={signWay === singWays.retgistration}
+          onClick={() => dispatch(setSignWay(singWays.registration))}
+          isActive={signWay === singWays.registration}
           logo={gmailLogo}
           describeTxt={{title:'Create account with email', signWays:'Email'}}
         />
