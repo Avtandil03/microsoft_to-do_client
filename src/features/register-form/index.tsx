@@ -8,7 +8,8 @@ import { singWays } from '../types'
 
 export const registrationForm = () => {
 
-  const { name, email, password, isNameValid, isEmailValid, isPasswordValid } = useAppSelector((state) => state.user)
+  const { user, isNameValid, isEmailValid, isPasswordValid } = useAppSelector((state) => state.user)
+  const {name, email, password} = user
   const dispatch = useAppDispatch()
 
   return (

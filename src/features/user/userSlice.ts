@@ -2,21 +2,23 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { IUser } from '../types/IUser'
 
-interface IUserValid extends IUser {
-
+interface IUserValid {
+  user: IUser
   isNameValid: boolean
   isEmailValid: boolean
   isPasswordValid: boolean
+  isAuth?: boolean
 }
 
 
 const initialState: IUserValid = {
+  user:{
   name: '',
   email: '',
-  password: '',
+  password: '', },
   isNameValid: false,
   isEmailValid: false,
-  isPasswordValid: false
+  isPasswordValid: false,
 }
 
 const validateName = (name:string) => {
@@ -45,20 +47,32 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     setName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload
-      state.isNameValid = validateName(state.name)
+      state.user.name = action.payload
+      state.isNameValid = validateName(state.user.name)
     },
     setEmail: (state, action: PayloadAction<string>) => {
-      state.email = action.payload
-      state.isEmailValid = validateEmail(state.email)
+      state.user.email = action.payload
+      state.isEmailValid = validateEmail(state.user.email)
     },
     setPassword: (state, action: PayloadAction<string>) => {
-      state.password = action.payload
-      state.isPasswordValid = validatePassword(state.password)
+      state.user.password = action.payload
+      state.isPasswordValid = validatePassword(state.user.password)
+    },
+    setUser: (state, action: PayloadAction<IUser>) => {
+      state.user = action.payload
+    },
+    resetUser: (state) => {
+      state.user = initialState.user
+      state.isEmailValid = false
+      state.isNameValid = false
+      state.isPasswordValid = false
+    },
+    setIsAuth:(state, action: PayloadAction<boolean>) => {
+      state.isAuth = action.payload
     }
   },
 })
 
-export const { setEmail, setName, setPassword } = userSlice.actions
+export const { setEmail, setName, setPassword, setUser, resetUser: resetUserData, setIsAuth } = userSlice.actions
 
 export default userSlice.reducer

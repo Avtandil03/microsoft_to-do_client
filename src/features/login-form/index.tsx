@@ -9,7 +9,8 @@ import { singWays } from '../types'
 
 export const loginForm = () => {
 
-  const { email, password, isEmailValid, isPasswordValid } = useAppSelector((state) => state.user)
+  const { user, isEmailValid, isPasswordValid } = useAppSelector((state) => state.user)
+  const {email, password} = user
   const dispatch = useAppDispatch()
   return (
     <div className={styles.container}>
@@ -35,7 +36,7 @@ export const loginForm = () => {
           onChange={(e) => dispatch(setPassword(e.target.value))}
         />
       </div>
-      <p>No account? <span onClick={() => dispatch(setSignWay(singWays.retgistration))}>Create one!</span> or use <span onClick={() => dispatch(setAreChoosen(false))}>other ways</span></p>
+      <p>No account? <span onClick={() => dispatch(setSignWay(singWays.registration))}>Create one!</span> or use <span onClick={() => dispatch(setAreChoosen(false))}>other ways</span></p>
     </div>
   )
 }
