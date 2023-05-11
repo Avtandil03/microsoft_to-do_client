@@ -16,11 +16,12 @@ export const authApi = createApi({
       const token = localStorage.getItem('token')
       headers.set('authorization', `Bearer ${token}`)
       return headers
-    }
+    },
+    credentials: "include"
   }),
 
   endpoints: builder => ({
-    registrationUser: builder.mutation<IUser, IUser>({
+    registrationUser: builder.mutation<IResponse, IUser>({
       query(body) {
         return {
           url: `registration`,
@@ -28,8 +29,32 @@ export const authApi = createApi({
           body,
         }
       },      
-    })
-  })
+    }),
+    loginUser: builder.mutation<IResponse, IUser>({
+      query(body) {
+        return {
+          url: `login`,
+          method: 'POST',
+          body,
+        }
+      },      
+    }),
+    logoutUser: builder.mutation<void, void>({
+      query(){
+        return {
+          url:  `logout`,
+          method: 'POST'
+        }
+      }
+    }),
+    checkAuth: builder.query<IResponse,void>({
+      query() {
+        return {
+          url: 'refresh'
+        }
+      },
+    }),
+  }),
 })
 
-export const { useRegistrationUserMutation } = authApi
+export const { useRegistrationUserMutation, useLoginUserMutation, useLogoutUserMutation, useCheckAuthQuery } = authApi
