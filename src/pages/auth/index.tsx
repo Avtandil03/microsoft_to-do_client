@@ -7,23 +7,37 @@ import { singWays } from "../../features/types";
 import { LoginForm, RegistrationForm, Socials } from "../../features";
 import { useAppDispatch, useAppSelector } from "../../app/store/store";
 import { setAreChoosen } from "../../features/sign-way/signWaySlice";
-import { useLoginUserMutation, useRegistrationUserMutation } from "../../features/api/apiSlice";
+import { useLazyCheckAuthQuery, useLoginUserMutation, useRegistrationUserMutation } from "../../features/api/apiSlice";
 import { setIsAuth } from "../../features/user/userSlice";
 
 const authPage = () => {
   const dispatch = useAppDispatch()
   const [isShow, setIsShow] = useState(false)
   const {signWay, areChoosen} = useAppSelector((state) => state.chooseWay)
-  const {user, isAuth} = useAppSelector((state) => state.user)
+  const {user} = useAppSelector((state) => state.user)
   const [registrationUser, registrationResult] = useRegistrationUserMutation()
   const [loginUser] = useLoginUserMutation()
   const [errorMessage, setErrorMessage] = useState('')
   const [suggestionMessage, setSuggestionMessage] = useState('')
+  const [checkAuth] = useLazyCheckAuthQuery()
+  
+  const checkIsAuth = async () => {
+    await checkAuth().unwrap().then((fulfilled) => {
+      localStorage.setItem('token', fulfilled.accessToken)
+      dispatch(setIsAuth(true))
+      console.log('check');
+
+    }).catch((e)=> {
+      console.log(e);
+    })
+  }
 
   useEffect(() => {
     setErrorMessage('')
     setSuggestionMessage('')
   }, [singWays])
+
+
   
 
   const handleContinue = async() => {
@@ -45,7 +59,7 @@ const authPage = () => {
         await loginUser(user).unwrap().then((payload)=> {
           localStorage.setItem('token', payload.accessToken)
           setErrorMessage('')         
-          dispatch(setIsAuth(true))
+          checkIsAuth()   
         }).catch((error) => {
           setErrorMessage(error.data.message)
         })
