@@ -1,19 +1,28 @@
 import { lazy } from "react";
 import { Route, Routes } from 'react-router-dom'
-import PrivatRoute from "./router/private-route";
+import { PrivateRoute } from "./router/private-route";
+import { PublicRoute } from "./router/public-route";
 
 const Home = lazy(() => import('./home'))
 const Auth = lazy(() => import('./auth'))
 const Settings = lazy(() => import('./settings'))
 
 export const Routing = () => {
+  
   return (
     <Routes>
-      <Route element={<PrivatRoute/>}>
-        <Route path="/" element={<Home/> }/>
-        <Route path="/settings" element={<Settings/>}/>
-      </Route>
-      <Route path="/auth" element={<Auth/>}/>
+      <Route
+        path="/"
+        element={ <PrivateRoute> <Home /> </PrivateRoute> }
+      />
+      <Route
+        path="/settings"
+        element={ <PrivateRoute><Settings /></PrivateRoute> }
+      />
+      <Route
+        path="/auth"
+        element={<PublicRoute><Auth /></PublicRoute>}
+      />
 
     </Routes>
   )
