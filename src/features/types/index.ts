@@ -1,1 +1,0 @@
-export { singWays } from "./signWays";
