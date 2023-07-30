@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #cfcfcf;
+  color: black;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    background-color: #212121;
+    color: #fff;
+  }
+}
+
+body {
+  font-family: system-ui, 'Times New Roman', Times, serif;
+  overflow: hidden;
+}
