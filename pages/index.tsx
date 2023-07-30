@@ -11,9 +11,15 @@ interface INestedLayout {
 
 const HomePage: NextPageWithLayout = () => {
   return (
-    <div className='h-full w-full '>
-      <Link href={'/login'} className='border'> to login</Link>
-      <Link href={'/settings'} className='border'> to settings</Link>
+    <div className="h-full w-full ">
+      <Link href={'/login'} className="border">
+        {' '}
+        to login
+      </Link>
+      <Link href={'/settings'} className="border">
+        {' '}
+        to settings
+      </Link>
     </div>
   )
 }
@@ -27,18 +33,15 @@ HomePage.getLayout = function getLayout(page: ReactElement) {
 }
 export default HomePage
 
-
 const Layout: React.FC<ILayout> = ({ children }) => {
   return (
-    <div className='flex'>
-      <div className='w-40 bg-red-500 h-40'></div>
+    <div className="flex">
+      <div className="w-40 bg-red-500 h-40"></div>
       {children}
     </div>
   )
 }
 
 const NestedLayout: React.FC<INestedLayout> = ({ children }) => {
-  return (
-    children
-  )
+  return children
 }
