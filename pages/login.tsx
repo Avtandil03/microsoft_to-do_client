@@ -1,17 +1,34 @@
+import { UiLoginModal } from '@/components/ui/ui-login-modal'
 import Image from 'next/image'
-import { ReactElement } from 'react'
+import type { ReactElement } from 'react'
+import { useState } from 'react'
 
 interface ILoginPageLayout {
   onClick: () => void
+  loginModal: ReactElement
 }
 
 export default function LoginPage() {
-  return <LoginPageLayout onClick={() => []} />
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <LoginPageLayout
+      onClick={() => setIsOpen(true)}
+      loginModal={
+        <UiLoginModal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <div></div>
+        </UiLoginModal>
+      }
+    />
+  )
 }
 
-const LoginPageLayout: React.FC<ILoginPageLayout> = ({ onClick }) => {
+const LoginPageLayout: React.FC<ILoginPageLayout> = ({
+  onClick,
+  loginModal,
+}) => {
   return (
-    <div className="flex flex-col items-center justify-center h-[100vh] bg-[#eee]">
+    <div className="flex flex-col items-center justify-center h-[100vh] bg-[#eee] text-black">
       <h1 className="sm:text-4xl xs:text-2xl font-light mb-10 text-center">
         Welcome to Microsoft To Do
       </h1>
@@ -23,6 +40,7 @@ const LoginPageLayout: React.FC<ILoginPageLayout> = ({ onClick }) => {
         alt="LoginImage"
       />
       <button
+        title="sing in"
         onClick={onClick}
         className="text-white bg-[#436af2] h-8 xs:w-64 px-9 text-sm mb-5 hover:blur-0 active:scale-[99%]"
       >
@@ -38,6 +56,7 @@ const LoginPageLayout: React.FC<ILoginPageLayout> = ({ onClick }) => {
         height={0}
         alt="LoginImage"
       />
+      {loginModal}
     </div>
   )
 }

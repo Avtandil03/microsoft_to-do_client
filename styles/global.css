@@ -16,4 +16,5 @@
 
 body {
   font-family: system-ui, 'Times New Roman', Times, serif;
+  overflow: hidden;
 }

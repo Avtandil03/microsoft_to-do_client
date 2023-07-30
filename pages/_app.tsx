@@ -1,11 +1,10 @@
 import type { ReactElement, ReactNode } from 'react'
 import type { NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import { Inter } from 'next/font/google'
-import clsx from 'clsx'
 import '../styles/global.css'
 
 export type NextPageWithLayout<P = {}, IP = P> = NextPage<P, IP> & {
+  // eslint-disable-next-line no-unused-vars
   getLayout?: (page: ReactElement) => ReactNode
 }
 
