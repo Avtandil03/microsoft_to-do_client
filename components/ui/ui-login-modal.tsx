@@ -4,17 +4,15 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import Draggable from 'react-draggable'
 
-interface IUiLoginModal {
-  isOpen: boolean
-  onClose: () => void
-  children: ReactElement
-}
-
-export const UiLoginModal: React.FC<IUiLoginModal> = ({
+export function UiLoginModal({
   isOpen = false,
   onClose,
   children,
-}) => {
+}: {
+  isOpen: boolean
+  onClose: () => void
+  children: ReactElement
+}) {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
@@ -41,9 +39,6 @@ export const UiLoginModal: React.FC<IUiLoginModal> = ({
           </button>
         </div>
         <div className="pt-6">{children}</div>
-        <button className="w-48 h-8 box-border bg-[#333] absolute hover:border-2 border-[#808080] active:brightness-150 active:scale-[98%] right-6 bottom-6">
-          Continue
-        </button>
       </div>
     </Draggable>
   )
@@ -52,3 +47,45 @@ export const UiLoginModal: React.FC<IUiLoginModal> = ({
     ? createPortal(modal, document.getElementById('modals') as HTMLElement)
     : null
 }
+
+UiLoginModal.SignWays = function UILoginModalSignWays({
+  onContinue,
+  preferWay,
+  children,
+}: {
+  onContinue: () => void
+  preferWay: React.ReactNode
+  children: React.ReactNode
+}) {
+  return (
+    <>
+      <h3 className="text-xl leading-6 pl-6">Let{`'`}s get you signed in</h3>
+      <div className="leading-8 text-sm font-semibold mt-[15px]">
+        <h5 className="pl-6">Use this way</h5>
+        {preferWay}
+        <h5 className="pl-6">Use different way to sign in</h5>
+        {children}
+      </div>
+      <button
+        onClick={onContinue}
+        className="w-48 h-8 box-border bg-[#333] absolute hover:border-2 border-[#808080active:brightness-150 active:scale-[98%] right-6 bottom-6 text-sm"
+      >
+        Continue
+      </button>
+    </>
+  )
+}
+
+// UiLoginModal.LoginForm = function UILoginModalLoginForm({
+//   onContinue,
+//   preferWay,
+//   children,
+// }: {
+//   onContinue: () => void
+//   preferWay: React.ReactNode
+//   children: React.ReactNode
+// }) {
+
+//   return (
+//   )
+// }
