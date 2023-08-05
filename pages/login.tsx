@@ -1,3 +1,5 @@
+import { LoginForm } from '@/components/login-form'
+import { RegisterForm } from '@/components/register-form'
 import { UiLoginModal } from '@/components/ui/ui-login-modal'
 import { SocialLoginWay } from '@/components/ui/ui-social-login-way'
 import Image from 'next/image'
@@ -32,26 +34,44 @@ export default function LoginPage() {
 
   const Back = () => (
     <button
-      className="border border-blue-300 hover:bg-slate-400"
+      className=" hover:bg-slate-900 transition-colors border-transparent  border hover:border-gray-600"
       onClick={() => {
-        console.log(currWindow)
         setCurrWindow(MODAL_CONTEN_TYPE.CHOOSE)
       }}
     >
-      back
+      <svg
+        width="12"
+        height="12"
+        viewBox="0 0 12 12"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="ml-3 w-4 h-6"
+      >
+        <g clipPath="url(#clip0_21_5803)">
+          <path
+            d="M11.5313 5.53125H1.60412L3.24859 3.89475C3.43208 3.71212 3.43278 3.41533 3.25016 3.23184C3.06753 3.04833 2.77072 3.04765 2.58723 3.23025L0.137915 5.66775C0.137751 5.66789 0.137634 5.66805 0.137493 5.66819C-0.0455302 5.85082 -0.0461161 6.14857 0.137446 6.3318C0.13761 6.33194 0.137728 6.33211 0.137868 6.33225L2.58718 8.76975C2.77065 8.95233 3.06746 8.95169 3.25011 8.76815C3.43274 8.58466 3.43203 8.28787 3.24854 8.10525L1.60412 6.46875H11.5313C11.7901 6.46875 12 6.25889 12 6C12 5.74111 11.7901 5.53125 11.5313 5.53125Z"
+            fill="currentColor"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_21_5803">
+            <rect width="12" height="12" fill="white" />
+          </clipPath>
+        </defs>
+      </svg>
     </button>
   )
   const modalContents = {
     [MODAL_CONTEN_TYPE.EMAIL_LOGIN]: (
       <div>
         <Back />
-        <div>login formbu </div>
+        <LoginForm />
       </div>
     ),
     [MODAL_CONTEN_TYPE.EMAIL_REGISTER]: (
       <div>
         <Back />
-        <div>register form </div>
+        <RegisterForm />
       </div>
     ),
     [MODAL_CONTEN_TYPE.MICROSOFT_CORPO]: (
@@ -137,7 +157,7 @@ const LoginPageLayout: React.FC<ILoginPageLayout> = ({
         className="mb-9 sm:w-[308px] xs:w-52 w-40"
         src="/login-bg.svg"
         width={308}
-        height={0}
+        height={221.41}
         alt="LoginImage"
       />
       <button

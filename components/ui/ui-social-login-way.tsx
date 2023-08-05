@@ -9,6 +9,7 @@ export function SocialLoginWay({
   subtitle,
   signWay,
 }: {
+  // eslint-disable-next-line no-unused-vars
   onClick: (signWay: string) => void
   areChoosen?: boolean
   logoSrc: string

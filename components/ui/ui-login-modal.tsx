@@ -38,7 +38,7 @@ export function UiLoginModal({
             />
           </button>
         </div>
-        <div className="pt-6">{children}</div>
+        <div>{children}</div>
       </div>
     </Draggable>
   )
@@ -58,7 +58,7 @@ UiLoginModal.SignWays = function UILoginModalSignWays({
   children: React.ReactNode
 }) {
   return (
-    <>
+    <div className="pt-6">
       <h3 className="text-xl leading-6 pl-6">Let{`'`}s get you signed in</h3>
       <div className="leading-8 text-sm font-semibold mt-[15px]">
         <h5 className="pl-6">Use this way</h5>
@@ -72,7 +72,7 @@ UiLoginModal.SignWays = function UILoginModalSignWays({
       >
         Continue
       </button>
-    </>
+    </div>
   )
 }
 
